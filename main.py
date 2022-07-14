@@ -4,12 +4,12 @@ import random
 # Quoi faire ?
 cours_principal = ["Django", "Formation complète Python"]
 cours_pratique = ["Projet", "Formation intermédiaire", "Formation hard"]
-passe_temps = ["Quiz", "Exercices"]
+pratique_rapide = ["Quiz", "Exercices"]
 
 # Choix aléatoires
 choix_01 = random.choice(cours_principal)
 choix_02 = random.choice(cours_pratique)
-choix_03 = random.choice(passe_temps)
+choix_03 = random.choice(pratique_rapide)
 
 emploie_du_temps_chemin = Path.home() / "EDT" / "Schedule.txt"
 
@@ -30,8 +30,8 @@ with open(emploie_du_temps_chemin, "r") as f:
     for i in texte:
         texte = texte.replace("MAIN", f"{random.choice(cours_principal)}")
         texte = texte.replace("PRATIQUE", f"{random.choice(cours_pratique)}")
-        texte = texte.replace("PASSE_TEMPS", f"")
+        texte = texte.replace("PASSE_TEMPS", f"{random.choice(pratique_rapide)}")
 with open(file_edt, "w") as f:
     f.write(texte)
 
-print("\033[32;1;20mVotre emploi du temps est prêt à être utilisé !")
+print(f"\033[32;1;20mVotre emploi du temps est prêt à être utilisé dans le dossier {schedule} !")
