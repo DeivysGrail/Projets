@@ -1,9 +1,8 @@
 from pathlib import Path
 import random
 
-
 # Quoi faire ?
-cours_principal = ["Django", "Udemy"]
+cours_principal = ["Django", "Formation complète Python"]
 cours_pratique = ["Projet", "Formation intermédiaire", "Formation hard"]
 passe_temps = ["Quiz", "Exercices"]
 
@@ -12,15 +11,16 @@ choix_01 = random.choice(cours_principal)
 choix_02 = random.choice(cours_pratique)
 choix_03 = random.choice(passe_temps)
 
-emploie_du_temps_chemin = "/home/bastien/EDT/Schedule.txt"
+emploie_du_temps_chemin = Path.home() / "EDT" / "Schedule.txt"
 
 
 # Semaine du ? --------------------------------------------------------
 unique_input = input("Semaine du lundi:")
-unique_input = f"Semaine du lundi {unique_input}"
+unique_input = f"Pour la semaine du lundi {unique_input}"
+
 # Création du fichier --------------------------------------------------
-schedule = Path("/home/bastien/EDT")
-file_edt = Path(f"/home/bastien/EDT/{unique_input}.txt")
+schedule = Path.home() / "EDT"
+file_edt = schedule / f"{unique_input}.txt"
 schedule.mkdir(exist_ok=True)
 file_edt.touch()
 
@@ -34,3 +34,4 @@ with open(emploie_du_temps_chemin, "r") as f:
 with open(file_edt, "w") as f:
     f.write(texte)
 
+print("\033[32;1;20mVotre emploi du temps est prêt à être utilisé !")
